@@ -1,0 +1,27 @@
+     1                                  [org 0x0100]
+     2                                  
+     3                                  ; start of code 
+     4                                  
+     5 00000000 B80500                  mov  ax, 5              ; move the constant 5 into register ax 
+     6 00000003 BB0A00                  mov  bx, 10             
+     7                                  
+     8 00000006 01D8                    add  ax, bx             ; add value of bx into the value of ax 
+     9                                  
+    10 00000008 BB0F00                  mov  bx, 15             ; add constant 15 into the value of bx 
+    11 0000000B 01D8                    add  ax, bx
+    12                                  
+    13 0000000D A1[1C00]                mov ax, [num1]
+    14 00000010 8B1E[1E00]              mov bx, [num2]
+    15                                  
+    16 00000014 A3[2000]                mov [num3], ax
+    17                                  
+    18                                  ; mov [num3], [num1] ;invalid
+    19                                  
+    20 00000017 B8004C                  mov  ax, 0x4c00         ; exit .. 
+    21 0000001A CD21                    int  0x21               ; .. is what the OS should do for me
+    22                                  
+    23                                  
+    24 0000001C 0500                    num1: dw 5
+    25 0000001E 0A00                    num2 dw 10
+    26 00000020 0F00                    num3 dw 15
+    27 00000022 0000                    num4: dw 0

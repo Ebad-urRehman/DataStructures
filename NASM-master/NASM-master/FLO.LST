@@ -1,0 +1,19 @@
+     1                                  [org 0x0100]
+     2                                  
+     3 00000000 B80000                  mov ax, 0
+     4                                  ; xor ax, ax
+     5 00000003 89C9                    mov cx, cx
+     6 00000005 BB[2000]                mov bx, num1
+     7                                  
+     8 00000008 B90300                  mov cx, 3
+     9                                  outerloop:
+    10 0000000B 0307                        add ax, [bx]
+    11 0000000D 81C30200                    add bx, 2
+    12 00000011 81E90100                    sub cx, 1
+    13 00000015 75F4                        JNZ outerloop
+    14 00000017 0106[2600]              add [result], ax
+    15 0000001B B8004C                  mov ax, 0x4c00
+    16 0000001E CD21                    int 0x21
+    17                                  
+    18 00000020 05000A000F00            num1: dw 5, 10, 15
+    19 00000026 0000                    result: dw 0
